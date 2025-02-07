@@ -19,7 +19,7 @@ This project is a native Android application that ports the open-source DOOM gam
 ### Installation
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/doom-android-auto.git
+   git clone https://github.com/amir13872/autoandroid-_doom.git
    ```
 2. Open the project in Android Studio.
 3. Build the project to generate the APK.
