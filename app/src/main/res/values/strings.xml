@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DOOM Port for Android Auto</string>
+    <string name="welcome_message">Welcome to DOOM on Android Auto!</string>
+    <string name="controls_instructions">Use your gamepad to control the game.</string>
+    <string name="exit_message">Press the exit button to quit the game.</string>
+    <string name="loading_message">Loading, please wait...</string>
+</resources>

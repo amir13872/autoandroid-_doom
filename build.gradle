@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33
+    defaultConfig {
+        applicationId "com.example.doomauto"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'com.google.android.gms:play-services-base:18.0.1'
+}
+
+task copyNativeLibs(type: Copy) {
+    from('src/main/jni/libs') {
+        include '**/*.so'
+    }
+    into("$buildDir/intermediates/merged_native_libs/${variant.name}/out/")
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        output.processResources.dependsOn(copyNativeLibs)
+    }
+}
